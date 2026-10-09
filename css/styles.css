@@ -726,6 +726,399 @@ h4 { font-size: 1rem; }
   margin-top: var(--space-2xl);
 }
 
+/* --- Tabs --- */
+.tabs {
+  display: flex;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+  border-bottom: 2px solid var(--color-border);
+}
+
+.tab-btn {
+  padding: var(--space-sm) var(--space-md);
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all var(--transition-fast);
+}
+
+.tab-btn:hover {
+  color: var(--color-text-secondary);
+}
+
+.tab-btn.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* --- Workout Builder Forms --- */
+.routine-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.form-row {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+  min-width: 0;
+}
+
+.form-group label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.55rem 0.75rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-bg);
+}
+
+.form-group-narrow {
+  flex: 0 0 80px;
+}
+
+/* --- Exercise List in Builder --- */
+.exercise-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  gap: var(--space-sm);
+}
+
+.exercise-item-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.exercise-item-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.exercise-item-detail {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.exercise-item .btn-remove {
+  color: var(--color-error);
+  font-size: 1.1rem;
+  padding: var(--space-xs);
+  flex-shrink: 0;
+}
+
+.exercise-item .btn-remove:hover {
+  background: #FCECED;
+  border-radius: var(--radius-sm);
+}
+
+/* --- Routine Cards --- */
+.routine-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.routine-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.routine-card-header h3 {
+  font-size: 1.05rem;
+}
+
+.routine-days {
+  display: flex;
+  gap: var(--space-xs);
+  flex-wrap: wrap;
+}
+
+.day-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.day-badge.active,
+.day-badge.selected {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.routine-exercises {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.routine-actions {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+}
+
+/* --- Session / Log Cards --- */
+.session-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+}
+
+.session-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.session-date {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.session-exercises {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.log-set-row {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+}
+
+.log-set-row .form-group {
+  flex: 0 0 70px;
+}
+
+.log-set-row .set-number {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  width: 30px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* --- Nutrition / Meal Sections --- */
+.food-search-container {
+  margin-bottom: var(--space-lg);
+}
+
+.food-result-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--space-sm);
+  gap: var(--space-md);
+}
+
+.food-result-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.food-result-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.food-result-brand {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.food-result-macros {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-top: var(--space-xs);
+}
+
+.macro-label {
+  font-weight: 600;
+}
+
+.meal-section {
+  margin-bottom: var(--space-lg);
+}
+
+.meal-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-sm);
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.meal-section-header h3 {
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.meal-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  gap: var(--space-sm);
+}
+
+.meal-item:hover {
+  background: var(--color-bg);
+}
+
+.meal-item-name {
+  font-size: 0.9rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.meal-item-macros {
+  display: flex;
+  gap: var(--space-md);
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  flex-shrink: 0;
+}
+
+/* --- Macro Totals Bar --- */
+.macro-totals {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--color-primary-bg);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-lg);
+}
+
+.macro-total-item {
+  text-align: center;
+}
+
+.macro-total-value {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.macro-total-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* --- Serving Size Input --- */
+.serving-row {
+  display: flex;
+  gap: var(--space-sm);
+  align-items: center;
+  margin-top: var(--space-sm);
+}
+
+.serving-row input {
+  width: 70px;
+  padding: 0.4rem 0.5rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  text-align: center;
+}
+
+.serving-row input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.serving-row span {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* --- Empty inline message --- */
+.empty-inline {
+  text-align: center;
+  padding: var(--space-lg);
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+}
+
 /* ============================================
    Responsive Breakpoints
    ============================================ */
