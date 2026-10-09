@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiftFuel - Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9889;</div>
+        Lift<span>Fuel</span>
+      </a>
+
+      <nav class="main-nav" id="desktopNav">
+        <a href="index.html" class="active">
+          <span class="nav-icon">&#9776;</span> Dashboard
+        </a>
+        <a href="exercises.html">
+          <span class="nav-icon">&#128170;</span> Exercises
+        </a>
+        <a href="workouts.html">
+          <span class="nav-icon">&#127947;</span> Workouts
+        </a>
+        <a href="nutrition.html">
+          <span class="nav-icon">&#127823;</span> Nutrition
+        </a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="active">
+      <span class="nav-icon">&#9776;</span> Dashboard
+    </a>
+    <a href="exercises.html">
+      <span class="nav-icon">&#128170;</span> Exercises
+    </a>
+    <a href="workouts.html">
+      <span class="nav-icon">&#127947;</span> Workouts
+    </a>
+    <a href="nutrition.html">
+      <span class="nav-icon">&#127823;</span> Nutrition
+    </a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="page-content">
+    <div class="container">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>Dashboard</h1>
+        <p>Your fitness overview at a glance</p>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="grid-4" id="statCards">
+        <div class="card stat-card">
+          <div class="card-header">
+            <span class="card-title">Workouts</span>
+            <div class="card-icon green">&#127947;</div>
+          </div>
+          <div class="card-value" id="statWorkouts">0</div>
+          <div class="card-subtitle">this week</div>
+        </div>
+
+        <div class="card stat-card">
+          <div class="card-header">
+            <span class="card-title">Calories</span>
+            <div class="card-icon orange">&#128293;</div>
+          </div>
+          <div class="card-value" id="statCalories">--</div>
+          <div class="card-subtitle">today</div>
+        </div>
+
+        <div class="card stat-card">
+          <div class="card-header">
+            <span class="card-title">Protein</span>
+            <div class="card-icon blue">&#129385;</div>
+          </div>
+          <div class="card-value" id="statProtein">--</div>
+          <div class="card-subtitle">grams today</div>
+        </div>
+
+        <div class="card stat-card">
+          <div class="card-header">
+            <span class="card-title">Streak</span>
+            <div class="card-icon red">&#128293;</div>
+          </div>
+          <div class="card-value" id="statStreak">0</div>
+          <div class="card-subtitle">day streak</div>
+        </div>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="grid-2" style="margin-top: var(--space-xl);">
+
+        <!-- Recent Activity -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Recent Activity</span>
+          </div>
+          <div class="state-message" id="recentActivity">
+            <div class="state-icon">&#128203;</div>
+            <p>No activity yet. Start by searching for exercises and building your first workout!</p>
+          </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="card">
+          <div class="card-header">
+            <span class="card-title">Quick Actions</span>
+          </div>
+          <div class="quick-actions">
+            <a href="exercises.html" class="quick-action-item">
+              <span class="qa-icon">&#128269;</span>
+              <span class="qa-text">Search exercises</span>
+            </a>
+            <a href="workouts.html" class="quick-action-item">
+              <span class="qa-icon">&#10133;</span>
+              <span class="qa-text">Create a workout</span>
+            </a>
+            <a href="nutrition.html" class="quick-action-item">
+              <span class="qa-icon">&#127860;</span>
+              <span class="qa-text">Log a meal</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Today's Goals (placeholder) -->
+      <div style="margin-top: var(--space-xl);">
+        <div class="section-header">
+          <h2>Today's Goals</h2>
+        </div>
+        <div class="card">
+          <div class="state-message" id="todayGoals">
+            <div class="state-icon">&#127919;</div>
+            <p>Set your daily goals to track your progress. Goals feature coming in Week 7!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>LiftFuel &copy; 2026 Josue Quinones | WDD 330 Final Project</p>
+    </div>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

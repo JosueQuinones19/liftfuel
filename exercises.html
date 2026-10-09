@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiftFuel - Exercises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">&#9889;</div>
+        Lift<span>Fuel</span>
+      </a>
+
+      <nav class="main-nav" id="desktopNav">
+        <a href="index.html">
+          <span class="nav-icon">&#9776;</span> Dashboard
+        </a>
+        <a href="exercises.html" class="active">
+          <span class="nav-icon">&#128170;</span> Exercises
+        </a>
+        <a href="workouts.html">
+          <span class="nav-icon">&#127947;</span> Workouts
+        </a>
+        <a href="nutrition.html">
+          <span class="nav-icon">&#127823;</span> Nutrition
+        </a>
+      </nav>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">
+      <span class="nav-icon">&#9776;</span> Dashboard
+    </a>
+    <a href="exercises.html" class="active">
+      <span class="nav-icon">&#128170;</span> Exercises
+    </a>
+    <a href="workouts.html">
+      <span class="nav-icon">&#127947;</span> Workouts
+    </a>
+    <a href="nutrition.html">
+      <span class="nav-icon">&#127823;</span> Nutrition
+    </a>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="page-content">
+    <div class="container">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>Exercise Library</h1>
+        <p>Search and discover exercises from the wger database</p>
+      </div>
+
+      <!-- Search Bar -->
+      <div class="search-bar">
+        <div class="input-group" style="flex:1">
+          <input type="text" id="exerciseSearch" placeholder="Search exercises (e.g., bench press, squat...)" autocomplete="off">
+        </div>
+        <button class="btn btn-primary" id="searchBtn">Search</button>
+      </div>
+
+      <!-- Category Filters -->
+      <div class="filter-group" id="categoryFilters">
+        <button class="filter-pill active" data-category="all">All</button>
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Muscle Group Filters -->
+      <div class="filter-group" id="muscleFilters" style="margin-top: 0">
+        <!-- Populated by JS -->
+      </div>
+
+      <!-- Results -->
+      <div id="exerciseResults">
+        <div class="state-message" id="initialState">
+          <div class="state-icon">&#128170;</div>
+          <p>Search for an exercise or pick a category to get started</p>
+        </div>
+      </div>
+
+      <!-- Loading State (hidden by default) -->
+      <div class="state-message" id="loadingState" style="display:none">
+        <div class="spinner"></div>
+        <p style="margin-top: var(--space-md)">Searching exercises...</p>
+      </div>
+
+      <!-- Error State (hidden by default) -->
+      <div class="state-message" id="errorState" style="display:none">
+        <div class="state-icon">&#9888;</div>
+        <p id="errorMessage">Something went wrong. Please try again.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Exercise Detail Modal -->
+  <div class="modal-overlay" id="exerciseModal">
+    <div class="modal">
+      <button class="modal-close" id="modalClose">&times;</button>
+      <h2 id="modalTitle">Exercise Name</h2>
+      <div id="modalBody">
+        <!-- Filled by JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>LiftFuel &copy; 2026 Josue Quinones | WDD 330 Final Project</p>
+    </div>
+  </footer>
+
+  <script src="js/ui.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api/wger.js"></script>
+  <script src="js/exercises.js"></script>
+</body>
+</html>
