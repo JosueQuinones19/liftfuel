@@ -43,12 +43,129 @@
         <p>Build routines and track your training sessions</p>
       </div>
 
-      <div class="card">
-        <div class="state-message">
-          <div class="state-icon">&#127947;</div>
-          <p>Workout builder coming in Week 6! You'll be able to create custom routines, log sets and reps, and track your training history.</p>
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="builder">Routine Builder</button>
+        <button class="tab-btn" data-tab="log">Log Workout</button>
+        <button class="tab-btn" data-tab="history">History</button>
+      </div>
+
+      <!-- Tab: Routine Builder -->
+      <div class="tab-panel active" id="tab-builder">
+
+        <!-- Create New Routine -->
+        <div class="card" style="margin-bottom: var(--space-lg);">
+          <div class="card-header">
+            <span class="card-title">Create New Routine</span>
+          </div>
+
+          <div class="routine-form">
+            <!-- Routine Name -->
+            <div class="form-group">
+              <label for="routineName">Routine Name</label>
+              <input type="text" id="routineName" placeholder="e.g., Push Day, Upper Body...">
+            </div>
+
+            <!-- Day Assignment -->
+            <div class="form-group">
+              <label>Assign to Days</label>
+              <div class="routine-days" id="daySelector">
+                <button class="day-badge" data-day="Mon">M</button>
+                <button class="day-badge" data-day="Tue">T</button>
+                <button class="day-badge" data-day="Wed">W</button>
+                <button class="day-badge" data-day="Thu">T</button>
+                <button class="day-badge" data-day="Fri">F</button>
+                <button class="day-badge" data-day="Sat">S</button>
+                <button class="day-badge" data-day="Sun">S</button>
+              </div>
+            </div>
+
+            <!-- Add Exercise -->
+            <div class="form-group">
+              <label>Add Exercise</label>
+              <div class="form-row">
+                <div class="form-group" style="flex:2">
+                  <input type="text" id="exerciseNameInput" placeholder="Exercise name">
+                </div>
+                <div class="form-group form-group-narrow">
+                  <input type="number" id="exerciseSets" placeholder="Sets" min="1" max="20">
+                </div>
+                <div class="form-group form-group-narrow">
+                  <input type="number" id="exerciseReps" placeholder="Reps" min="1" max="100">
+                </div>
+                <div class="form-group form-group-narrow">
+                  <input type="number" id="exerciseWeight" placeholder="Wt (lb)" min="0" step="2.5">
+                </div>
+                <button class="btn btn-primary btn-sm" id="addExerciseBtn">Add</button>
+              </div>
+            </div>
+
+            <!-- Exercise list preview -->
+            <div id="routineExercises" class="routine-exercises"></div>
+
+            <button class="btn btn-accent" id="saveRoutineBtn" style="align-self: flex-start;">Save Routine</button>
+          </div>
+        </div>
+
+        <!-- Saved Routines -->
+        <div class="section-header">
+          <h2>Your Routines</h2>
+        </div>
+        <div id="savedRoutines">
+          <div class="empty-inline" id="noRoutines">
+            No routines yet. Create your first one above!
+          </div>
         </div>
       </div>
+
+      <!-- Tab: Log Workout -->
+      <div class="tab-panel" id="tab-log">
+        <div class="card" style="margin-bottom: var(--space-lg);">
+          <div class="card-header">
+            <span class="card-title">Log a Session</span>
+          </div>
+
+          <!-- Pick routine or freestyle -->
+          <div class="form-group" style="margin-bottom: var(--space-md);">
+            <label for="logRoutineSelect">Start from a routine</label>
+            <select id="logRoutineSelect">
+              <option value="">-- Select a routine --</option>
+            </select>
+          </div>
+
+          <p class="text-muted" style="font-size:0.85rem; margin-bottom: var(--space-md);">
+            Or add exercises manually below
+          </p>
+
+          <!-- Add exercise to log -->
+          <div class="form-row" style="margin-bottom: var(--space-md);">
+            <div class="form-group" style="flex:2">
+              <input type="text" id="logExerciseName" placeholder="Exercise name">
+            </div>
+            <button class="btn btn-outline btn-sm" id="addLogExerciseBtn">Add Exercise</button>
+          </div>
+
+          <!-- Exercises to log -->
+          <div id="logExercises"></div>
+
+          <button class="btn btn-accent" id="saveSessionBtn" style="margin-top: var(--space-md);">
+            Save Session
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab: History -->
+      <div class="tab-panel" id="tab-history">
+        <div class="section-header">
+          <h2>Session History</h2>
+        </div>
+        <div id="sessionHistory">
+          <div class="empty-inline" id="noHistory">
+            No sessions logged yet. Start logging your workouts!
+          </div>
+        </div>
+      </div>
+
     </div>
   </main>
 
@@ -59,5 +176,8 @@
   </footer>
 
   <script src="js/ui.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/workouts.js"></script>
 </body>
 </html>
