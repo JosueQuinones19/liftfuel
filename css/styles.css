@@ -1146,3 +1146,161 @@ h4 { font-size: 1rem; }
   .grid-4 { grid-template-columns: repeat(4, 1fr); }
   .exercise-list { grid-template-columns: repeat(3, 1fr); }
 }
+
+/* ============================================
+   Dashboard - Today's Routine
+   ============================================ */
+
+.routine-summary {
+  padding: var(--space-md);
+}
+
+.routine-summary + .routine-summary {
+  border-top: 1px solid var(--color-border);
+}
+
+.routine-summary-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.routine-summary-name {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.routine-exercise-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.routine-exercise-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg);
+  border-radius: var(--radius-sm);
+}
+
+.routine-exercise-name {
+  font-weight: 500;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.routine-exercise-detail {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+}
+
+/* ============================================
+   Dashboard - Macro Progress
+   ============================================ */
+
+.macro-progress-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg);
+}
+
+@media (min-width: 600px) {
+  .macro-progress-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.macro-progress-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.macro-progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.macro-progress-name {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-text);
+}
+
+.macro-progress-value {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  font-variant-numeric: tabular-nums;
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 10px;
+  background: var(--color-border);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width 0.4s ease;
+}
+
+.macro-progress-percent {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  text-align: right;
+}
+
+/* ============================================
+   Dashboard - Recent Activity
+   ============================================ */
+
+.activity-item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md) 0;
+}
+
+.activity-item + .activity-item {
+  border-top: 1px solid var(--color-border);
+}
+
+.activity-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+  flex-shrink: 0;
+  padding-top: 2px;
+}
+
+.activity-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.activity-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text);
+}
+
+.activity-detail {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.activity-date {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
