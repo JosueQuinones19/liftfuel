@@ -107,6 +107,8 @@ const Storage = {
     return this.get('goals', {
       dailyCalories: null,
       dailyProtein: null,
+      dailyCarbs: null,
+      dailyFat: null,
       weeklyWorkouts: null
     });
   },

@@ -28,10 +28,21 @@ const WgerAPI = {
       }
     });
 
-    const response = await fetch(url.toString());
+    let response;
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 10000);
+      response = await fetch(url.toString(), { signal: controller.signal });
+      clearTimeout(timeoutId);
+    } catch (err) {
+      if (err.name === 'AbortError') {
+        throw new Error('Request timed out. The server may be slow — please try again.');
+      }
+      throw new Error('Network error. Check your internet connection.');
+    }
 
     if (!response.ok) {
-      throw new Error(`wger API error: ${response.status} ${response.statusText}`);
+      throw new Error(`Server error (${response.status}). Please try again later.`);
     }
 
     return response.json();

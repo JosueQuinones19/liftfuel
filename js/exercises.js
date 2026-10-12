@@ -35,11 +35,20 @@
 
   // --- Load filter pills ---
   async function loadFilters() {
+    // Show loading indicator while filters load
+    categoryFilters.insertAdjacentHTML('beforeend',
+      '<span class="filter-loading"><span class="spinner" style="width:16px;height:16px;border-width:2px;"></span> Loading filters...</span>'
+    );
+
     try {
       const [categories, muscles] = await Promise.all([
         WgerAPI.getCategories(),
         WgerAPI.getMuscles()
       ]);
+
+      // Remove loading indicator
+      const loadingEl = categoryFilters.querySelector('.filter-loading');
+      if (loadingEl) loadingEl.remove();
 
       // Add category pills
       categories.forEach(cat => {
@@ -60,6 +69,17 @@
       });
     } catch (err) {
       console.warn('Failed to load filters:', err);
+      const loadingEl = categoryFilters.querySelector('.filter-loading');
+      if (loadingEl) {
+        loadingEl.innerHTML = '<span style="color:var(--color-text-muted);font-size:0.85rem;">Could not load filters &mdash; <button class="btn-link" id="retryFiltersBtn">retry</button></span>';
+        const retryBtn = document.getElementById('retryFiltersBtn');
+        if (retryBtn) {
+          retryBtn.addEventListener('click', () => {
+            loadingEl.remove();
+            loadFilters();
+          });
+        }
+      }
     }
   }
 
@@ -134,8 +154,16 @@
       renderResults(currentResults);
     } catch (err) {
       console.error('Search error:', err);
-      errorMessage.textContent = `Failed to search exercises: ${err.message}`;
+      const isOffline = !navigator.onLine;
+      errorMessage.innerHTML = isOffline
+        ? 'You appear to be offline. Check your connection and <button class="btn-link" id="retrySearchBtn">try again</button>.'
+        : `Failed to search exercises. <button class="btn-link" id="retrySearchBtn">Try again</button>`;
       showState('errorState', allStates);
+
+      const retryBtn = document.getElementById('retrySearchBtn');
+      if (retryBtn) {
+        retryBtn.addEventListener('click', () => performSearch());
+      }
     }
   }
 

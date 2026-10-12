@@ -106,13 +106,72 @@
         </div>
       </div>
 
+      <!-- Today's Routine -->
+      <div style="margin-top: var(--space-xl);">
+        <div class="section-header">
+          <h2>Today's Routine</h2>
+        </div>
+        <div class="card" id="todayRoutineCard">
+          <div class="state-message" id="noRoutineMsg">
+            <div class="state-icon">&#127947;</div>
+            <p>No routine scheduled for today. <a href="workouts.html">Create one in Workouts</a>.</p>
+          </div>
+          <div id="todayRoutineContent" style="display: none;"></div>
+        </div>
+      </div>
+
+      <!-- Macro Progress -->
+      <div style="margin-top: var(--space-xl);">
+        <div class="section-header">
+          <h2>Macro Progress</h2>
+          <button class="btn btn-outline btn-sm" id="setGoalsBtn">Set Goals</button>
+        </div>
+        <div class="card" id="macroProgressCard">
+          <div id="macroProgressContent"></div>
+        </div>
+      </div>
+
+      <!-- Goals Modal -->
+      <div class="modal-overlay" id="goalsModal">
+        <div class="modal">
+          <button class="modal-close" id="goalsModalClose">&times;</button>
+          <h2>Set Your Goals</h2>
+          <div class="goals-modal-body">
+            <p class="text-secondary" style="margin-bottom: var(--space-lg); font-size: 0.9rem;">
+              Set daily targets to track your progress with animated rings on the dashboard.
+            </p>
+            <div class="form-group" style="margin-bottom: var(--space-md);">
+              <label for="goalCalories">Daily Calories</label>
+              <input type="number" id="goalCalories" placeholder="e.g., 2500" min="0" step="50">
+            </div>
+            <div class="form-group" style="margin-bottom: var(--space-md);">
+              <label for="goalProtein">Daily Protein (g)</label>
+              <input type="number" id="goalProtein" placeholder="e.g., 150" min="0" step="5">
+            </div>
+            <div class="form-group" style="margin-bottom: var(--space-md);">
+              <label for="goalCarbs">Daily Carbs (g)</label>
+              <input type="number" id="goalCarbs" placeholder="e.g., 300" min="0" step="5">
+            </div>
+            <div class="form-group" style="margin-bottom: var(--space-md);">
+              <label for="goalFat">Daily Fat (g)</label>
+              <input type="number" id="goalFat" placeholder="e.g., 80" min="0" step="5">
+            </div>
+            <div class="form-group" style="margin-bottom: var(--space-lg);">
+              <label for="goalWorkouts">Weekly Workouts</label>
+              <input type="number" id="goalWorkouts" placeholder="e.g., 5" min="0" max="7">
+            </div>
+            <button class="btn btn-accent" id="saveGoalsBtn" style="width: 100%;">Save Goals</button>
+          </div>
+        </div>
+      </div>
+
       <!-- Two Column Layout -->
       <div class="grid-2" style="margin-top: var(--space-xl);">
 
         <!-- Recent Activity -->
         <div class="card">
           <div class="card-header">
-            <span class="card-title">Recent Activity</span>
+            <span class="card-title">Recent Workout Activity</span>
           </div>
           <div class="state-message" id="recentActivity">
             <div class="state-icon">&#128203;</div>
@@ -141,19 +200,6 @@
           </div>
         </div>
 
-      </div>
-
-      <!-- Today's Goals (placeholder) -->
-      <div style="margin-top: var(--space-xl);">
-        <div class="section-header">
-          <h2>Today's Goals</h2>
-        </div>
-        <div class="card">
-          <div class="state-message" id="todayGoals">
-            <div class="state-icon">&#127919;</div>
-            <p>Set your daily goals to track your progress. Goals feature coming in Week 7!</p>
-          </div>
-        </div>
       </div>
 
     </div>
