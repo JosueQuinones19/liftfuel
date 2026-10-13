@@ -43,14 +43,139 @@
         <p>Track your meals and daily macros</p>
       </div>
 
-      <div class="card">
-        <div class="state-message">
-          <div class="state-icon">&#127823;</div>
-          <p>Nutrition tracking coming in Week 6! You'll be able to search foods using the USDA database, log daily meals, and track your calorie and protein intake.</p>
+      <!-- Daily Macro Totals -->
+      <div class="macro-totals">
+        <div class="macro-total-item">
+          <div class="macro-total-value" id="totalCalories">0</div>
+          <div class="macro-total-label">Calories</div>
+        </div>
+        <div class="macro-total-item">
+          <div class="macro-total-value" id="totalProtein">0g</div>
+          <div class="macro-total-label">Protein</div>
+        </div>
+        <div class="macro-total-item">
+          <div class="macro-total-value" id="totalCarbs">0g</div>
+          <div class="macro-total-label">Carbs</div>
+        </div>
+        <div class="macro-total-item">
+          <div class="macro-total-value" id="totalFat">0g</div>
+          <div class="macro-total-label">Fat</div>
+        </div>
+      </div>
+
+      <!-- Food Search -->
+      <div class="card food-search-container">
+        <div class="card-header">
+          <h3>&#128269; Search Foods</h3>
+        </div>
+        <div class="search-bar">
+          <div class="input-group" style="flex:1">
+            <input type="text" id="foodSearch" placeholder="Search the USDA database (e.g., chicken breast, rice...)" autocomplete="off">
+          </div>
+          <button class="btn btn-primary" id="foodSearchBtn">Search</button>
+        </div>
+
+        <!-- Loading -->
+        <div class="state-message" id="foodLoading" style="display:none">
+          <div class="spinner"></div>
+          <p style="margin-top: var(--space-md)">Searching foods...</p>
+        </div>
+
+        <!-- Error -->
+        <div class="state-message" id="foodError" style="display:none">
+          <div class="state-icon">&#9888;</div>
+          <p id="foodErrorMsg">Something went wrong.</p>
+        </div>
+
+        <!-- Search Results -->
+        <div id="foodResults" style="display:none; margin-top: var(--space-md)"></div>
+      </div>
+
+      <!-- Meal Sections -->
+      <div class="card" style="margin-top: var(--space-lg)">
+        <div class="card-header">
+          <h3>&#128221; Today's Meals</h3>
+        </div>
+
+        <!-- Breakfast -->
+        <div class="meal-section">
+          <div class="meal-section-header">
+            <h3>&#127749; Breakfast</h3>
+          </div>
+          <div class="meal-items" data-meal="breakfast">
+            <div class="empty-inline">No foods logged yet</div>
+          </div>
+        </div>
+
+        <!-- Lunch -->
+        <div class="meal-section">
+          <div class="meal-section-header">
+            <h3>&#9728; Lunch</h3>
+          </div>
+          <div class="meal-items" data-meal="lunch">
+            <div class="empty-inline">No foods logged yet</div>
+          </div>
+        </div>
+
+        <!-- Dinner -->
+        <div class="meal-section">
+          <div class="meal-section-header">
+            <h3>&#127769; Dinner</h3>
+          </div>
+          <div class="meal-items" data-meal="dinner">
+            <div class="empty-inline">No foods logged yet</div>
+          </div>
+        </div>
+
+        <!-- Snacks -->
+        <div class="meal-section">
+          <div class="meal-section-header">
+            <h3>&#127850; Snacks</h3>
+          </div>
+          <div class="meal-items" data-meal="snacks">
+            <div class="empty-inline">No foods logged yet</div>
+          </div>
         </div>
       </div>
     </div>
   </main>
+
+  <!-- Add Food Modal -->
+  <div class="modal-overlay" id="addFoodModal">
+    <div class="modal">
+      <button class="modal-close" id="addFoodModalClose">&times;</button>
+      <h2 id="addFoodName">Food Name</h2>
+
+      <div class="detail-section">
+        <h4>Serving Size</h4>
+        <div class="serving-row">
+          <input type="number" id="servingInput" value="100" min="1" step="1">
+          <span>grams</span>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h4>Macros</h4>
+        <div class="food-result-macros" id="addFoodMacros" style="flex-wrap: wrap; gap: var(--space-md)">
+          <!-- Updated dynamically -->
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <h4>Meal</h4>
+        <div class="form-group">
+          <select id="mealTypeSelect">
+            <option value="breakfast">Breakfast</option>
+            <option value="lunch">Lunch</option>
+            <option value="dinner">Dinner</option>
+            <option value="snacks">Snacks</option>
+          </select>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-lg" id="confirmAddFoodBtn" style="width:100%; margin-top: var(--space-md)">Add to Log</button>
+    </div>
+  </div>
 
   <footer class="site-footer">
     <div class="container">
@@ -59,5 +184,9 @@
   </footer>
 
   <script src="js/ui.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/api/usda.js"></script>
+  <script src="js/nutrition.js"></script>
 </body>
 </html>
